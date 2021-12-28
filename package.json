@@ -4,12 +4,11 @@
   "description": "Testing how sockets work",
   "main": "index.js",
   "scripts": {
-    "build":"cd client && npm run build",
-  
-    "heroku-postbuild":"npm run build",
+    "build": "cd client && npm run build",
+    "heroku-postbuild": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js",
-    "start":"node index.js"
+    "start": "node index.js"
   },
   "author": "Nitesh",
   "license": "MIT",
@@ -25,9 +24,14 @@
     "mongodb": "^4.2.0",
     "mongoose": "^6.0.13",
     "nodemailer": "^6.7.2",
+    "pip": "0.0.1",
     "react-router-dom": "^6.0.2",
     "socket.io": "^4.4.0",
     "socket.io-client": "^2.4.0",
     "uuid": "^8.3.2"
+  },
+  "engines": {
+    "npm": "5.6.0",
+    "node": "8.10.0"
   }
 }
