@@ -48,10 +48,17 @@ const server= app.listen(port,()=>{
 //     cert: fs.readFileSync('./cert.pem', 'utf-8')
     
 //   }
+<<<<<<< HEAD
   // const httpsServer = https.createServer(options, app);
   // httpsServer.listen(port, () => {
   //   console.log('listening on port: ' ,port)
   // })
+=======
+//   const httpsServer = https.createServer(options, app);
+//   httpsServer.listen(port, () => {
+//     console.log('listening on port: ' ,port)
+//   })
+>>>>>>> bbcd5db6a3d38250144f7907b2691d8321f085bd
 
 // var privateKey = fs.readFileSync('./key.pem')
 // var certificate = fs.readFileSync('./cert.pem')
@@ -63,10 +70,15 @@ const server= app.listen(port,()=>{
 // });
 
 const io = new Server(server,{
+<<<<<<< HEAD
     cors: {    origin: "*",   }
     // ,key:fs.readFileSync('./key.pem'),
     // cert:fs.readFileSync('./cert.pem'),
     // ca:fs.readFileSync('./ca.pem'),
+=======
+    cors: {    origin: "*",   },
+  
+>>>>>>> bbcd5db6a3d38250144f7907b2691d8321f085bd
     // rejectUnauthorized:false,
     
     // export HTTPS=true&&SSL_CRT_FILE=cert.pem&&SSL_KEY_FILE=key.pem
@@ -480,4 +492,8 @@ io.on('connection',async(socket)=>{
         reject(error)
       }
     })
+<<<<<<< HEAD
   }
+=======
+  }
+>>>>>>> bbcd5db6a3d38250144f7907b2691d8321f085bd
