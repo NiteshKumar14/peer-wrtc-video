@@ -20,6 +20,7 @@
     "mediasoup": "^3.9.2",
     "mongoose": "^6.0.13",
     "nodemailer": "^6.7.2",
+    "path": "^0.12.7",
     "react-router-dom": "^6.0.2",
     "setuptools": "0.0.1",
     "socket.io": "^4.4.0",

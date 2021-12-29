@@ -1,5 +1,7 @@
 require('dotenv').config({path:"./config.env"});
 const login = require('./controllers/login');
+const path = require('path');
+console.log(__dirname);
 const express =  require('express');
 const fs =require('fs');
 const mediasoup = require('mediasoup');
