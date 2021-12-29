@@ -23,7 +23,6 @@ app.use(cors({
 app.use(corsMiddleware);
 
 
-app.use(__dirname+'./client/build');
 app.use(express.json());
 
 dbConnect();
@@ -35,6 +34,18 @@ app.post('/auth/reset-password/:id/:token',resetPassword);
 app.post('/auth/validateToken',validateToken);
 app.use(errorHandler);
 const {v4:uuidv4} = require('uuid');
+
+
+if(process.env.NODE_ENV=='production'){
+  const path = require('path');
+  app.get('/',(req,res)=>{
+    app.use(express.static(path.relative(_dirname,'client','build')))
+    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+    
+  })
+}
+
+
 const server= app.listen(port,()=>{
   
     console.log(`server is up and running on port ${port}`);
