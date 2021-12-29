@@ -41,7 +41,7 @@ const {v4:uuidv4} = require('uuid');
 if(process.env.NODE_ENV=='production'){
   const path = require('path');
   app.get('/',(req,res)=>{
-    app.use(express.static(path.relative(_dirname,'client','build')))
+    app.use(express.static(path.relative(__dirname,'client','build')))
     res.sendFile(path.resolve(__dirname,'client','build','index.html'))
     
   })
