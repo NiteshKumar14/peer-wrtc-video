@@ -63,10 +63,8 @@ const server= app.listen(port,()=>{
 // });
 
 const io = new Server(server,{
-    cors: {    origin: "*",   }
-    ,key:fs.readFileSync('./key.pem'),
-    cert:fs.readFileSync('./cert.pem'),
-    ca:fs.readFileSync('./ca.pem'),
+    cors: {    origin: "*",   },
+  
     // rejectUnauthorized:false,
     
     // export HTTPS=true&&SSL_CRT_FILE=cert.pem&&SSL_KEY_FILE=key.pem
