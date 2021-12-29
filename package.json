@@ -4,7 +4,6 @@
   "description": "Testing how sockets work",
   "main": "index.js",
   "scripts": {
-    "build": "cd client && npm run build",
     
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js",
