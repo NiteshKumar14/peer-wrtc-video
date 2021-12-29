@@ -1,0 +1,88 @@
+body {
+    background-image:url("background.jpg");
+    /* background-repeat: no-repeat;
+    height: 100vh;
+    background-position: center;
+    width: 100%; */
+
+}
+div.container{
+
+width: 80%;
+text-align: center;
+
+display: flex;
+flex-direction: row;
+
+height: 80%;
+background-color:white;
+margin-top:80px;
+position:absolute;
+margin-left: 120px;
+border-radius: 10px;
+box-shadow: 0 0 10px grey
+
+}
+    
+
+div.video-card{
+    width:70%;
+    height: 96%;
+    background-color: white;
+    margin:10px 10px;
+    box-shadow: 0 0 6px grey;
+    border-radius: 10px;
+}
+div.chat{
+    width:30%;
+    height: 96%;
+    background-color: white;
+    margin:10px 10px;
+    box-shadow: 0 0 10px grey;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+
+
+}
+#input-field{
+    width:80%;
+    border-radius: 5px;
+    box-shadow: 0 0 2px grey;
+    margin-top:5px;
+    margin-left: 3px;
+    border-color:white;
+}
+#input-field:focus{
+    outline:none;
+
+}
+div.content{
+    height: 85%;
+    overflow: hidden;
+    box-shadow: 1px 1px 2px grey;
+    border-radius: 10px;
+    
+    
+
+}
+div.message{
+    padding-top: 20px;
+    display: flex; 
+    border-width:3px;
+    box-shadow: 0 0 6px grey;
+    border-radius: 10px;
+    height: 30px;
+    padding-top:2px;
+    margin-top:20px;
+    padding-bottom: 3px;
+}
+#send{
+    height: 70%;
+    align-self: center;
+    border-color:white;
+    
+}
+#send:focus{
+    outline:none;
+}
