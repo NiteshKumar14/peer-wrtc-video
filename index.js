@@ -23,7 +23,7 @@ app.use(cors({
 app.use(corsMiddleware);
 
 
-
+app.use(__dirname+'./client/build');
 app.use(express.json());
 
 dbConnect();
@@ -66,7 +66,7 @@ const server= app.listen(port,()=>{
 //     console.log('server is created on port ',port);
 // });
 
-const io = new Server(httpsServer,{
+const io = new Server(server,{
 
     cors: {    origin: "*",   }
     // ,key:fs.readFileSync('./key.pem'),
