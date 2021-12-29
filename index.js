@@ -38,20 +38,20 @@ app.post('/auth/reset-password/:id/:token',resetPassword);
 app.post('/auth/validateToken',validateToken);
 app.use(errorHandler);
 const {v4:uuidv4} = require('uuid');
-// const server= app.listen(port,()=>{
+const server= app.listen(port,()=>{
   
-//     console.log(`server is up and running on port ${port}`);
-// });
+    console.log(`server is up and running on port ${port}`);
+});
 
-const options = {
-    key: fs.readFileSync('./key.pem', 'utf-8'),
-    cert: fs.readFileSync('./cert.pem', 'utf-8')
+// const options = {
+//     key: fs.readFileSync('./key.pem', 'utf-8'),
+//     cert: fs.readFileSync('./cert.pem', 'utf-8')
     
-  }
-  const httpsServer = https.createServer(options, app);
-  httpsServer.listen(port, () => {
-    console.log('listening on port: ' ,port)
-  })
+//   }
+//   const httpsServer = https.createServer(options, app);
+//   httpsServer.listen(port, () => {
+//     console.log('listening on port: ' ,port)
+//   })
 
 // var privateKey = fs.readFileSync('./key.pem')
 // var certificate = fs.readFileSync('./cert.pem')
@@ -62,7 +62,7 @@ const options = {
 //     console.log('server is created on port ',port);
 // });
 
-const io = new Server(httpsServer,{
+const io = new Server(server,{
     cors: {    origin: "*",   }
     ,key:fs.readFileSync('./key.pem'),
     cert:fs.readFileSync('./cert.pem'),
