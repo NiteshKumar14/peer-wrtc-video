@@ -5,9 +5,9 @@ import io from 'socket.io-client';
 import axios from 'axios';
 
 import '../'
-export const socket = io('http://192.168.0.107:5000',{
+export const socket = io('https://192.168.0.107:5000',{
    
- reconnect: true, rejectUnauthorized : false,});
+ secure:true,reconnect: true, rejectUnauthorized : false,});
 
 
 

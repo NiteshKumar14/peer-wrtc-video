@@ -7,10 +7,6 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server.js",
     "start": "node index.js"
-    ,"build":"ng build",
-    "heroku-postbuild":"ng build --prod"
-
-     
   },
   "author": "Nitesh",
   "license": "MIT",
@@ -19,6 +15,7 @@
     "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "httpolyglot": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
     "mediasoup": "^3.9.2",
     "mongoose": "^6.0.13",
@@ -28,9 +25,9 @@
     "socket.io": "^4.4.0",
     "socket.io-client": "^2.4.0",
     "uuid": "^8.3.2"
-  }
-  ,"engines":{
-    "noded":"14.x",
-    "npm":"6.x"
+  },
+  "engines": {
+    "noded": "14.x",
+    "npm": "6.x"
   }
 }

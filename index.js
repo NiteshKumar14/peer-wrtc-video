@@ -5,7 +5,7 @@ const fs =require('fs');
 const mediasoup = require('mediasoup');
 const app = express();
 const port = process.env.PORT||5000;
-// const https = require('httpolyglot');
+const https = require('httpolyglot');
 const register =  require('./controllers/register');
 const dbConnect = require('./middleware/dbConnect');
 const forgotPassword =require('./controllers/forgotPassword');
@@ -66,7 +66,7 @@ const server= app.listen(port,()=>{
 //     console.log('server is created on port ',port);
 // });
 
-const io = new Server(server,{
+const io = new Server(httpsServer,{
 
     cors: {    origin: "*",   }
     // ,key:fs.readFileSync('./key.pem'),
@@ -91,8 +91,7 @@ let roomName;
 
 const createWorker = async () => {
   worker = await mediasoup.createWorker({
-    rtcMinPort: 2000,
-    rtcMaxPort: 2020,
+  
   })
   console.log(`worker pid ${worker.pid}`)
 

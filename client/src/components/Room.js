@@ -129,7 +129,7 @@ function Room() {
       console.log('getLocalStream is called ');
     navigator.mediaDevices
       .getUserMedia({
-        audio: false,
+        audio: true,
         video: {
           width: {
             min: 640,
