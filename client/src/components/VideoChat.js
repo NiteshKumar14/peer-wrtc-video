@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 
 import '../'
-export const socket = io('https://localhost:5000',{
+export const socket = io('https://vicallw-niteshkumar14.vercel.app/',{
    
 secure:true, reconnect: true, rejectUnauthorized : false,});
 
