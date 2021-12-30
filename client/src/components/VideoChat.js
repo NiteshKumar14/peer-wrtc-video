@@ -5,7 +5,7 @@ import io from 'socket.io-client';
 import axios from 'axios';
 
 import '../'
-export const socket = io('https://video-call-app9.herokuapp.com/',{
+export const socket = io('http://localhost:5000/',{
    
  reconnect: true, rejectUnauthorized : false,});
 
@@ -47,7 +47,7 @@ function VideoChat() {
                     });
             
             }).catch((error)=>{
-                navigate("/login",{state:"please login to continue"});
+                navigate("/login");
         
             })
     

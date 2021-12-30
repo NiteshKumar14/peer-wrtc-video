@@ -2,7 +2,7 @@ import React from 'react'
 import './Login.css'
 import { Helmet } from 'react-helmet'
 import { useState, useEffect } from 'react'
-import { useNavigate,} from 'react-router-dom'
+import { useNavigate,useLocation} from 'react-router-dom'
 import axios from 'axios'
 // import validateToken from '../utils/validateToken';
 function Login() {
@@ -13,10 +13,11 @@ function Login() {
     const [error,setError] = useState("");
 
 
+
     useEffect(()=>{
         
             
-                
+                    
                     const token = localStorage.getItem("authToken");
                     
                     

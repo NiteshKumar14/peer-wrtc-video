@@ -1,6 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
+  "proxy": "http://localhost:5000/",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.5",
@@ -19,7 +20,7 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "reacr-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

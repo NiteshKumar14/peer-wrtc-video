@@ -4,9 +4,8 @@ import { socket } from "../components/VideoChat";
 import { useParams, useNavigate, useLocation } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
 import axios from "axios";
-import { Device } from "mediasoup-client";
-// import validateToken from '../utils/validateToken';
-// import { receiveMessageOnPort } from 'worker_threads';
+import Peer from "simple-peer";
+import styled from "styled-components";
 function Room() {
   // console.log('stte:',state);
   
@@ -18,7 +17,37 @@ function Room() {
   const messageRef = useRef();
   const username = useRef();
   const { state } = useLocation();
-  const [remoteVideos,setRemoteVideos] = useState([]);
+  
+
+  const [peers, setPeers] = useState([]);
+  const socketRef = useRef();
+  const userVideo = useRef();
+  const peersRef = useRef([]);
+  
+  const StyledVideo = styled.video`
+    height: 40%;
+    width: 50%;
+`;
+  const Video = (props) => {
+    const ref = useRef();
+    console.log("propps",props);
+
+    useEffect(() => {
+        props.peer.on("stream", stream => {
+            ref.current.srcObject = stream;
+        })
+    }, []);
+
+    return (
+        <StyledVideo playsInline autoPlay ref={ref} />
+    );
+}
+
+
+
+
+
+
   useEffect(() => {
     if (messageRef) {
       messageRef.current.addEventListener("DOMNodeInserted", event => {
@@ -26,7 +55,96 @@ function Room() {
         target.scroll({ top: target.scrollHeight, behavior: "smooth" });
       });
     }
+    
   }, []);
+
+
+  const videoConstraints = {
+    height: window.innerHeight / 2,
+    width: window.innerWidth / 2
+};
+
+
+  useEffect(() => {
+    socketRef.current = socket;
+    navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
+      userVideo.current.srcObject=stream;
+      socketRef.current.emit("join room");
+      socketRef.current.on("all users",users=>{
+        console.log('all users is called ')
+        const peers =[];
+        users.forEach(userID => {
+          const peer = createPeer(userID,socketRef.current.id,stream);
+          peersRef.current.push({
+            peerID:userID,
+            peer,
+          })
+          peers.push(peer);
+          
+        });
+        console.log('peersss',peers);
+        setPeers(peers);
+      })
+      socketRef.current.on('user joined',payload=>{
+        console.log('user joined is called with apthlod ')
+        const peer = addPeer(payload.signal,payload.callerID,stream);
+        peersRef.current.push({
+          peerID:payload.callerID,
+          peer,
+        })
+        setPeers(users=>[...users,peer]);
+      })
+      socketRef.current.on("receiving returned signal", payload => {
+        const item = peersRef.current.find(p => p.peerID === payload.id);
+        item.peer.signal(payload.signal);
+    });
+    })
+}, []);
+
+
+function createPeer(userToSignal, callerID, stream) {
+  const peer = new Peer({
+    initiator:true,
+    trickle:false,
+    stream,
+  });
+  peer.on("signal" ,signal=>{
+    socketRef.current.emit('sending signal',{userToSignal,callerID,signal});
+  });
+  return peer;
+  
+       
+}
+function addPeer(incomingSignal, callerID, stream) {
+      const peer =new Peer({
+        initiator:false,
+        trickle:false,
+        stream
+      });
+      peer.on("signal",signal=>{
+        socketRef.current.emit('returning signal',{signal,callerID});
+
+      })
+      peer.signal(incomingSignal);
+      
+      return peer; 
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   useEffect(() => {
     const token = localStorage.getItem("authToken");
 
@@ -42,23 +160,28 @@ function Room() {
         const base64 = base64Url.replace("-", "+").replace("_", "/");
         const payload = JSON.parse(window.atob(base64));
         username.current = payload.user;
-
+        // console.log(state)
+        console.log(!state)
         if (!state) {
+          console.log(state)
+          
           navigate("/video-chat");
         } else {
           recieveMessage(`Welcome ${state.username} to the room `, "");
         }
       })
       .catch(error => {
-        navigate("/login", { username: "plese login to continue" });
+        console.log(error)
+        navigate("/login");
       });
   }, [navigate, state]);
   const sendMessageHandler = () => {
+    
     setChats([
       ...chats,
       {
         message: message,
-        person_id: username.current,
+        person_id: username.current+":" ,
         time: Date.now(),
         classType: "me"
       }
@@ -69,11 +192,16 @@ function Room() {
     setMessage("");
   };
   const recieveMessage = (message, username) => {
+    let  usr=username;
+    if(username==="")
+    usr="";
+    else
+    usr=username+":";
     setChats([
       ...chats,
       {
         message: message,
-        person_id: username + ":",
+        person_id: usr,
         time: Date.now(),
         classType: "other"
       }
@@ -95,7 +223,13 @@ function Room() {
   return (
     <div className="container-room">
       <div className="video-card">
-      
+      <video muted ref={userVideo} autoPlay playsInline />
+
+      {peers.map((peer, index) => {
+                return (
+                    <video key={index} peer={peer} playsInline autoPlay/>
+                );
+            })}
         
         <div className="controls">
         
