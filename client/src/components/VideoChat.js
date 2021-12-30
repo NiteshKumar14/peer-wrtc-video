@@ -34,7 +34,7 @@ function VideoChat() {
                     'Content-type':"application/json"
                 }
             }
-            axios.post('/auth/validateToken',{token},config).then((res)=>{
+            axios.post('https://peer-wrtc-video.herokuapp.com/auth/validateToken',{token},config).then((res)=>{
                 const base64Url= token.split('.')[1];
                 const base64 = base64Url.replace('-','+').replace('_','/');
                 const payload = JSON.parse(window.atob(base64));

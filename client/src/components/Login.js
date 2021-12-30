@@ -26,7 +26,7 @@ function Login() {
                                 'Content-type':"application/json"
                             }
                         }
-                    const {data} =axios.post('/auth/validateToken',{token},config).then((res)=>{
+                    const {data} =axios.post('https://peer-wrtc-video.herokuapp.com/auth/validateToken',{token},config).then((res)=>{
                     
                             navigate('/video-chat');
                         
@@ -63,7 +63,7 @@ function Login() {
             }
         }
         try {
-            const {data} = await axios.post('/auth/login',{email,password,username},config);
+            const {data} = await axios.post('https://peer-wrtc-video.herokuapp.com/auth/login',{email,password,username},config);
             console.log("data",data);
             
             localStorage.setItem("authToken",data.token);
@@ -92,7 +92,7 @@ function Login() {
             }
         }
         try{
-            const {data} = await axios.post('/auth/register',{username,password,email},config);
+            const {data} = await axios.post('https://peer-wrtc-video.herokuapp.com/auth/register',{username,password,email},config);
                 console.log("data",data);
             
                 localStorage.setItem('authToken',data.token);
