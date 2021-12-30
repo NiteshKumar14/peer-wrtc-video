@@ -154,7 +154,7 @@ function addPeer(incomingSignal, callerID, stream) {
       }
     };
     axios
-      .post("/auth/validateToken", { token }, config)
+      .post("https://peer-wrtc-video.herokuapp.com/auth/validateToken", { token }, config)
       .then(res => {
         const base64Url = token.split(".")[1];
         const base64 = base64Url.replace("-", "+").replace("_", "/");
