@@ -38,14 +38,14 @@ app.use(errorHandler);
 const {v4:uuidv4} = require('uuid');
 
 
-if(process.env.NODE_ENV=='production'){
-  const path = require('path');
-  app.get('/',(req,res)=>{
-    app.use(express.static(path.relative(__dirname,'client','build')))
-    res.sendFile(path.resolve(__dirname,'client','build','index.html'))
+// if(process.env.NODE_ENV=='production'){
+//   const path = require('path');
+//   app.get('/',(req,res)=>{
+//     app.use(express.static(path.relative(__dirname,'client','build')))
+//     res.sendFile(path.resolve(__dirname,'client','build','index.html'))
     
-  })
-}
+//   })
+// }
 
 
 const server= app.listen(port,()=>{
@@ -114,7 +114,7 @@ const createWorker = async () => {
     setTimeout(() => process.exit(1), 2000) // exit in 2 seconds
   })
 
-  return worker
+  return worker;
 }
 
 worker = createWorker();
