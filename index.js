@@ -23,7 +23,9 @@ app.use(cors({
     methods:['GET','POST'],
 }));
 app.use(corsMiddleware);
-
+app.get('/',(req,res)=>{
+    res.send({"heuu":"jjd"});
+})
 
 app.use(express.json());
 
