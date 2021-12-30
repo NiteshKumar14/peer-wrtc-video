@@ -17,7 +17,7 @@
     "express": "^4.17.1",
     "httpolyglot": "^0.1.2",
     "jsonwebtoken": "^8.5.1",
-    "mediasoup": "^3.9.2",
+    
     "mongoose": "^6.0.13",
     "nodemailer": "^6.7.2",
     "path": "^0.12.7",
