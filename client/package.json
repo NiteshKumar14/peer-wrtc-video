@@ -1,7 +1,7 @@
 {
   "name": "client",
   "version": "0.1.0",
-  "proxy": "http://localhost:5000/",
+  "proxy": "https://peer-wrtc-video.herokuapp.com/",
   "private": true,
   "dependencies": {
     "@babel/core": "^7.16.5",
