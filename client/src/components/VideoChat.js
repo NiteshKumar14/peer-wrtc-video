@@ -5,9 +5,9 @@ import io from 'socket.io-client';
 import axios from 'axios';
 
 import '../'
-export const socket = io(' https://peer-wrtc-video.herokuapp.com/',{
+export const socket = io('https://peer-wrtc-video.herokuapp.com/',{
    
- reconnect: true, rejectUnauthorized : false,});
+ secure:true,reconnect: true, rejectUnauthorized : false,});
 
 
 
