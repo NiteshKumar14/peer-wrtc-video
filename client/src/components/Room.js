@@ -101,9 +101,9 @@ function Room() {
     })
 }, []);
 
-socket.on('user disconnected',(id)=>{
-  recieveMessage("left",id);
-})
+// socket.on('user disconnected',(id)=>{
+//   recieveMessage("left",id);
+// })
 function createPeer(userToSignal, callerID, stream) {
   const peer = new Peer({
     initiator:true,

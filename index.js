@@ -101,7 +101,7 @@ io.on('connection',async(socket)=>{
 
     });
     socket.on('disconnect', () => {
-        io.to.emit('user disconnected',{id:userS[socket.id]});
+        // io.to.emit('user disconnected',{id:userS[socket.id]});
         const roomID = socketToRoom[socket.id];
         let room = users[roomID];
         if (room) {
