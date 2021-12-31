@@ -106,7 +106,7 @@ box-shadow: 0 0 10px grey
     width: 80%;
     float: right;
 }
-#localVideo {
+.video {
             width: 360px;
             background-color: black;
             margin: 2px 0;
