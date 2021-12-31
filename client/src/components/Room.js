@@ -49,7 +49,7 @@ function Room() {
 
 
 
- 
+  useEffect(() => {
     if (messageRef) {
       messageRef.current.addEventListener("DOMNodeInserted", event => {
         const { currentTarget: target } = event;
@@ -57,7 +57,8 @@ function Room() {
       });
     }
     
- 
+  }, []);
+
 
   const videoConstraints = {
     height: window.innerHeight / 2,
@@ -112,7 +113,7 @@ function Room() {
     
       if(peerObj){
         peerObj.peer.destroy();
-        console.log('peer destroy is called ');
+        console.log('peer destroy is called ')
 
       }
       const peers = peersRef.current.filter(p=>p.peerID!==id)
@@ -199,7 +200,7 @@ function addPeer(incomingSignal, callerID, stream) {
         console.log(error)
         navigate("/login");
       });
-  }, []);
+  }, [navigate, state]);
   const sendMessageHandler = () => {
     
     setChats([
