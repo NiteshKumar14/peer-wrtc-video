@@ -17,7 +17,7 @@ function Home() {
 
 <nav class="navbar">
         <div class="logo">
-            <img src={Logo} alt="video call"/>
+            <img src="" alt="video call"/>
         </div>
         <div class="links">
             <ul>
@@ -37,7 +37,7 @@ function Home() {
             <button type="button">Download App</button>
         </div>
         <div class="photo">
-            <img src="images/image-1.svg" alt=""/>
+            <img src={Logo} alt=""/>
         </div>
     </div>
     

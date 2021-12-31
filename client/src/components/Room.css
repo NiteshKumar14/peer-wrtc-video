@@ -1,20 +1,13 @@
-body {
-    background-image:url("background.jpg");
-    /* background-repeat: no-repeat;
-    height: 100vh;
-    background-position: center;
-    width: 100%; */
 
-}
 .container-room{
-
-width: 80%;
+    background-image:url("background.jpg");
+width: 100%;
 text-align: center;
 
 display: flex;
 flex-direction: row;
 
-height: 80%;
+height: 100vh;
 background-color:white;
 margin-top:80px;
 position:absolute;
@@ -107,7 +100,7 @@ box-shadow: 0 0 10px grey
     float: right;
 }
 .video {
-            width: 360px;
-            background-color: black;
+            width: 200pxx;
+            
             margin: 2px 0;
         }
