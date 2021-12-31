@@ -6,6 +6,7 @@ import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Peer from "simple-peer";
 import styled from "styled-components";
+import Chat from './Chat'
 function Room() {
   // console.log('stte:',state);
   
@@ -250,7 +251,7 @@ function addPeer(incomingSignal, callerID, stream) {
     <div className="container-room">
       <div className="video-card">
       <StyledVideo  ref={userVideo} autoPlay playsInline />
-
+      <Chat chats={chats}/>
       {peers.map((peer) => {
                 return (
                     <Video key={peer.peerID} peer={peer.peer} playsInline autoPlay/>
@@ -262,16 +263,6 @@ function addPeer(incomingSignal, callerID, stream) {
         </div>
       </div>
       <div className="chat">
-        <div className="content" ref={messageRef}>
-          {chats.map(chat => {
-            return (
-              <p key={chat.time} className={chat.classType}>
-                {chat.person_id}
-                {chat.message}
-              </p>
-            );
-          })}
-        </div>
         <div className="message">
           <input
             type="text"
