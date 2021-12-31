@@ -200,7 +200,7 @@ function addPeer(incomingSignal, callerID, stream) {
         console.log(error)
         navigate("/login");
       });
-  }, [navigate, state]);
+  }, []);
   const sendMessageHandler = () => {
     
     setChats([
