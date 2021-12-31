@@ -28,6 +28,7 @@ function Room() {
     height: 40%;
     width: 50%;
 `;
+
   const Video = (props) => {
     const ref = useRef();
     console.log("propps",props);
@@ -79,25 +80,42 @@ function Room() {
             peerID:userID,
             peer,
           })
-          peers.push(peer);
+          peers.push({
+            peerID:userID,
+            peer,
+          });
           
         });
         console.log('peersss',peers);
         setPeers(peers);
       })
       socketRef.current.on('user joined',payload=>{
-        console.log('user joined is called with apthlod ')
+        console.log('user joined is called with ',payload)
         const peer = addPeer(payload.signal,payload.callerID,stream);
         peersRef.current.push({
           peerID:payload.callerID,
           peer,
         })
-        setPeers(users=>[...users,peer]);
+        const peerObj = {
+          peer,
+          peerID:payload.callerID
+        }
+        setPeers(users=>[...users,peerObj]);
       })
       socketRef.current.on("receiving returned signal", payload => {
         const item = peersRef.current.find(p => p.peerID === payload.id);
         item.peer.signal(payload.signal);
     });
+    socketRef.current.on('user disconnected',id){
+      const peerObj = peersRef.current.find(p=>p.peerID===id);
+      if(peerObj){
+        peerObj.peer.destroy();
+
+      }
+      const peers = peersRef.current.filter(p=>p.peerID!==id)
+      peersRef.current = peers;
+      setPeers(peers);
+    }
     })
 }, []);
 
@@ -113,6 +131,7 @@ function createPeer(userToSignal, callerID, stream) {
   peer.on("signal" ,signal=>{
     socketRef.current.emit('sending signal',{userToSignal,callerID,signal});
   });
+  
   return peer;
   
        
@@ -225,11 +244,11 @@ function addPeer(incomingSignal, callerID, stream) {
   return (
     <div className="container-room">
       <div className="video-card">
-      <video muted ref={userVideo} autoPlay playsInline />
+      <StyledVideo  ref={userVideo} autoPlay playsInline />
 
-      {peers.map((peer, index) => {
+      {peers.map((peer) => {
                 return (
-                    <video key={index} peer={peer} playsInline autoPlay/>
+                    <Video key={peer.peerID} peer={peer.peer} playsInline autoPlay/>
                 );
             })}
         
