@@ -31,9 +31,8 @@ function Home() {
 
     <div class="container123">
         <div class="text">
-            <h1>Home Delivery <span>From Stores Near You</span></h1>
-            <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
-            <button type="button">Download App</button>
+            <h1>Home Delivery <span>Video Call </span></h1>
+            
         </div>
         <div class="photo">
             <img src={Logo} alt="" id="landing"/>
