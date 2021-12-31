@@ -2,6 +2,7 @@ import React from 'react'
 import './home.css'
 import { Helmet } from 'react-helmet'
 import Logo from './video_call.jpg';
+import vi from './vi.jpeg'
 import {Link} from 'react-router-dom'
 function Home() {
   return (
@@ -18,7 +19,7 @@ function Home() {
 
 <nav class="navbar">
         <div class="logo">
-            <img src="" alt="video call"/>
+            <img src={vi} alt="video call"/>
         </div>
         <div class="links">
             <ul>
