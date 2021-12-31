@@ -1,13 +1,23 @@
 import React from 'react'
 import './home.css'
-import video_chat from './video_chat.jpg'
+import { Helmet } from 'react-helmet'
+import Logo from './video_call.jpg';
 function Home() {
   return (
     <div>
+        <Helmet>
+        <head>
+    <meta charset="UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="style.css"/>
+    <title>Delivery VI CALL  APP</title>
+</head>
+        </Helmet>
 
 <nav class="navbar">
         <div class="logo">
-            <img src={video_chat} alt="video call"/>
+            <img src={Logo} alt="video call"/>
         </div>
         <div class="links">
             <ul>
