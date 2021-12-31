@@ -1,13 +1,13 @@
 import React from 'react'
 import './home.css'
-import logo from './video_chat.jpg'
+import video_chat from './video_chat.jpg'
 function Home() {
   return (
     <div>
 
 <nav class="navbar">
         <div class="logo">
-            <img src={logo} alt="video call"/>
+            <img src={video_chat} alt="video call"/>
         </div>
         <div class="links">
             <ul>
