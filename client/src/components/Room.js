@@ -69,7 +69,7 @@ function Room() {
     socketRef.current = socket;
     navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
       userVideo.current.srcObject=stream;
-      socketRef.current.emit("join room");
+      socketRef.current.emit("join room",roomID);
       socketRef.current.on("all users",users=>{
         console.log('all users is called ')
         const peers =[];
