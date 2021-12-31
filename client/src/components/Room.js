@@ -70,6 +70,7 @@ function Room() {
     socketRef.current = socket;
     navigator.mediaDevices.getUserMedia({ video: videoConstraints, audio: true }).then(stream => {
       userVideo.current.srcObject=stream;
+      console.log('joined room is called by ',username.current)
       socketRef.current.emit("join room",roomID);
       socketRef.current.on("all users",users=>{
         console.log('all users is called ')
@@ -103,18 +104,22 @@ function Room() {
         setPeers(users=>[...users,peerObj]);
       })
       socketRef.current.on("receiving returned signal", payload => {
+        console.log('receiving returned signal is called');
         const item = peersRef.current.find(p => p.peerID === payload.id);
         item.peer.signal(payload.signal);
     });
-    socketRef.current.on('user disconnected',id=>{
+    socketRef.current.on('user disconnected',(id,user)=>{
       const peerObj = peersRef.current.find(p=>p.peerID===id);
+    
       if(peerObj){
         peerObj.peer.destroy();
+        console.log('peer destroy is called ');
 
       }
       const peers = peersRef.current.filter(p=>p.peerID!==id)
       peersRef.current = peers;
       setPeers(peers);
+      recieveMessage('left',user);
     })
     })
 }, []);
