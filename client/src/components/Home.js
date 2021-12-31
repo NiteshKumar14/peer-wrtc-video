@@ -2,6 +2,7 @@ import React from 'react'
 import './home.css'
 import { Helmet } from 'react-helmet'
 import Logo from './video_call.jpg';
+import {Link} from 'react-router-dom'
 function Home() {
   return (
     <div>
@@ -21,11 +22,9 @@ function Home() {
         </div>
         <div class="links">
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="#">Services</a></li>
-                <li><a href="#">About</a></li>
-                <li><a href="#">How It Works</a></li>
-                <li><a href="#">Testimonials</a></li>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/login">Login / SIgnUp</Link></li>
+               
             </ul>
         </div>
     </nav>
