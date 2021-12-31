@@ -49,7 +49,7 @@ function Room() {
 
 
 
-  useEffect(() => {
+ 
     if (messageRef) {
       messageRef.current.addEventListener("DOMNodeInserted", event => {
         const { currentTarget: target } = event;
@@ -57,8 +57,7 @@ function Room() {
       });
     }
     
-  }, []);
-
+ 
 
   const videoConstraints = {
     height: window.innerHeight / 2,
