@@ -73,9 +73,7 @@ function VideoChat() {
         
 
     }
-    socket.on('connect_error',(err)=>{
-        
-    })
+    
     return (
         <div>
 
