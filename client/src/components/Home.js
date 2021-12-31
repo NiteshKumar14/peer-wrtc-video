@@ -36,7 +36,7 @@ function Home() {
             <button type="button">Download App</button>
         </div>
         <div class="photo">
-            <img src={Logo} alt=""/>
+            <img src={Logo} alt="" id="landing"/>
         </div>
     </div>
     

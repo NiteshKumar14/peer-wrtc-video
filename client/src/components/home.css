@@ -86,3 +86,7 @@
 .container .photo img{
     width: 520px;
 } 
+#landing{
+    max-width: 100%;
+    height: auto;
+}
