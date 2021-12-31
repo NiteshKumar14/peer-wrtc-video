@@ -1,7 +1,16 @@
 import React from 'react'
 
 function Chat(chats) {
-    
+    const messageRef = useRef();
+    useEffect(() => {
+        if (messageRef) {
+          messageRef.current.addEventListener("DOMNodeInserted", event => {
+            const { currentTarget: target } = event;
+            target.scroll({ top: target.scrollHeight, behavior: "smooth" });
+          });
+        }
+        
+      }, []);
     return (
        
         <div className="content" ref={messageRef}>

@@ -15,7 +15,7 @@ function Room() {
   const [message, setMessage] = useState("");
   const [chats, setChats] = useState([]);
   const { roomID } = useParams();
-  const messageRef = useRef();
+
   const username = useRef();
   const { state } = useLocation();
   
@@ -50,15 +50,7 @@ function Room() {
 
 
 
-  useEffect(() => {
-    if (messageRef) {
-      messageRef.current.addEventListener("DOMNodeInserted", event => {
-        const { currentTarget: target } = event;
-        target.scroll({ top: target.scrollHeight, behavior: "smooth" });
-      });
-    }
-    
-  }, []);
+ 
 
 
   const videoConstraints = {
