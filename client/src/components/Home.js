@@ -29,7 +29,7 @@ function Home() {
         </div>
     </nav>
 
-    <div class="container12">
+    <div class="container123">
         <div class="text">
             <h1>Home Delivery <span>From Stores Near You</span></h1>
             <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
