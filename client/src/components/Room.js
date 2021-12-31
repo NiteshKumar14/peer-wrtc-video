@@ -106,7 +106,7 @@ function Room() {
         const item = peersRef.current.find(p => p.peerID === payload.id);
         item.peer.signal(payload.signal);
     });
-    socketRef.current.on('user disconnected',id){
+    socketRef.current.on('user disconnected',id=>{
       const peerObj = peersRef.current.find(p=>p.peerID===id);
       if(peerObj){
         peerObj.peer.destroy();
@@ -115,7 +115,7 @@ function Room() {
       const peers = peersRef.current.filter(p=>p.peerID!==id)
       peersRef.current = peers;
       setPeers(peers);
-    }
+    })
     })
 }, []);
 
