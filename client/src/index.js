@@ -25,7 +25,7 @@ ReactDOM.render(
       <Route path ="/" element={<Home/>}>
       </Route>
       <Route path ="/login" element={<Login/>}/>
-      {/* <Route path ="/register" element={<Register/>}/> */}
+      
       <Route path ="/reset-password" element={<ResetPassword/>}/>
       <Route path ="/video-chat" element={<VideoChat/>}/>
       <Route path="/room/:roomID" element = {<Room/>}/>
